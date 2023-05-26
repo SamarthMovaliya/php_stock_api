@@ -17,10 +17,10 @@
         $res = $config->insert_retailer($name, $email, $contact, $password);
 
         if($res) {
-            $arr['data'] = 'User created successfully...';
+            $arr['data'] = 'Retailer created successfully';
             http_response_code(201);
         } else {
-            $arr['data'] = 'User creation failed...';
+            $arr['data'] = 'Retailer creation failed';
         }
     } else {
         $arr['data'] = 'Only POST request method is allowed...';

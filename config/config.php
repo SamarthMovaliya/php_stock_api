@@ -76,23 +76,22 @@
 
         //For retailer Insertion
 
-        public function insert_retailer($name, $email, $contact, $pasword) {
+        public function insert_retailer($name, $email, $contact, $password) {
             $this->connect();
 
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $Hased_password = password_hash($password,PASSWORD_DEFAULT);
+            $query = "INSERT INTO retailers_list(name, email, contact, password) VALUES('$name', '$email', $contact, '$password');";
 
-            $query = "INSERT INTO retailers_list(name, email, contact, password) VALUES ('$name', '$email', $contact, '$password');";
-        
-            $res = mysqli_query($this->conn, $query);
+            $res = mysqli_query($this->conn, $query);  
 
-            return $res;        
+            return $res;  // bool
         }
 
         //For Supplier Insertion
         public function insert_supplier($name, $email, $contact, $company_id) {
             $this->connect();
 
-            $query = "INSERT INTO suppliers_list(supplier_name, email, contact_no, company_id) VALUES('$name', $email, '$contact', '$company_id');";
+            $query = "INSERT INTO suppliers_list(supplier_name, email, contact_no, company_id) VALUES('$name', '$email', $contact, $company_id);";
 
             $res = mysqli_query($this->conn, $query);  
 
@@ -120,6 +119,17 @@
             $res = mysqli_query($this->conn, $query);  
 
             return $res;  // bool
+        }
+
+        //For Fetching Orders
+        public function fetch_orders(){
+            $this->connect();
+
+            $query = "SELECT * FROM orders;";
+
+            $res = mysqli_query($this->conn, $query);
+
+            return $res;   // object of mysqli_result class
         }
 
         

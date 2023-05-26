@@ -17,10 +17,10 @@
         $res = $config->insert_supplier($username, $email, $contact_no, $company_id);
 
         if($res) {
-            $arr['data'] = 'User created successfully...';
+            $arr['data'] = 'Supplier created successfully...';
             http_response_code(201);
         } else {
-            $arr['data'] = 'User creation failed...';
+            $arr['data'] = 'Supplier creation failed...';
         }
     } else {
         $arr['data'] = 'Only POST request method is allowed...';
