@@ -16,7 +16,7 @@
         public function connect() {
             $this->conn = mysqli_connect($this->host, $this->db_user_name, $this->Password, $this->db_name);  
 
-            return $this->conn; // bool
+            return $this->conn; 
         }
 
 
@@ -84,7 +84,7 @@
 
             $res = mysqli_query($this->conn, $query);  
 
-            return $res;  // bool
+            return $res;  
         }
 
         //For Supplier Insertion
@@ -118,7 +118,7 @@
 
             $res = mysqli_query($this->conn, $query);  
 
-            return $res;  // bool
+            return $res;  
         }
 
         //For Fetching Orders
@@ -129,7 +129,30 @@
 
             $res = mysqli_query($this->conn, $query);
 
-            return $res;   // object of mysqli_result class
+            return $res;   
+        }
+
+        //For deleting order 
+        public function delete_order($id) {
+
+            $this->connect();
+
+            $query = "DELETE FROM orders WHERE id=$id;";
+
+            $res = mysqli_query($this->conn, $query);
+
+            return $res;  
+        }
+
+        //For update order
+        public function update_order($r_id, $p_id, $c_id, $quantity, $id) {
+            $this->connect();
+
+            $query = "UPDATE orders SET r_id=$r_id, p_id=$p_id, c_id =$c_id, quantity = $quantity WHERE id=$id;";
+
+            $res = mysqli_query($this->conn, $query);
+
+            return $res;  
         }
 
         
